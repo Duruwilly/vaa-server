@@ -18,14 +18,15 @@ app.use(express.urlencoded({ extended: false }));
 app.post("/api/enrollment", async (req, res) => {
   const token = req.body["g-recaptcha-response"];
   const remoteIp = req.connection.remoteAddress;
-console.log("req",req);
+console.log({"req": req.body});
+console.log({"req connection": req.connection});
   // Verify the reCAPTCHA token
   const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHSECRETKEY}&response=${token}&remoteip=${remoteIp}`;
 
   try {
     const response = await axios.post(verifyUrl);
     const verificationData = response.data;
-
+console.log({"verification": verificationData});
     if (verificationData.success) {
       // reCAPTCHA verification succeeded
       res.send(
