@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.post("api/enrollment", async (req, res) => {
   const token = req.body["g-recaptcha-response"];
   const remoteIp = req.connection.remoteAddress;
-
+console.log("req",req);
   // Verify the reCAPTCHA token
   const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHSECRETKEY}&response=${token}&remoteip=${remoteIp}`;
 
