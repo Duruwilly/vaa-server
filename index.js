@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
+import axios from "axios";
 
 dotenv.config();
 
